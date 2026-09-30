@@ -7,13 +7,16 @@ Personal portfolio built with **Next.js 16**, **React 19**, **TypeScript** and *
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build      # static output in ./out
+npm run build
+npm start          # serve the production build
 npm run typecheck
 ```
 
 ## Editing content
 
-All copy (intro, Uber highlights, projects, skills, contact) lives in [`lib/content.ts`](lib/content.ts). Layout code never needs to change to update the site.
+All copy (intro, experience, projects, skills, contact) lives in [`lib/content.ts`](lib/content.ts). Layout code never needs to change to update the site.
+
+**Writing** is pulled live from Hashnode ([jasir.hashnode.dev](https://jasir.hashnode.dev)) via its public GraphQL API in [`lib/hashnode.ts`](lib/hashnode.ts). The home page regenerates at most once an hour, so a newly published post appears automatically. If the API is unreachable, the fallback posts in `content.ts` are shown.
 
 ## Design notes
 
@@ -24,4 +27,4 @@ All copy (intro, Uber highlights, projects, skills, contact) lives in [`lib/cont
 
 ## Deploy
 
-Import the repo in Vercel (zero config), or serve `./out` from any static host (Netlify, GitHub Pages, Cloudflare Pages).
+Import the repo in Vercel (zero config). Hourly regeneration (ISR) needs a Next.js-aware host such as Vercel or Netlify, not a plain static host.

@@ -2,7 +2,11 @@ import { HeroBackground } from '@/components/HeroBackground'
 import { Experience } from '@/components/Experience'
 import { Interactions } from '@/components/Interactions'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from '@/components/Icons'
+import { getPosts } from '@/lib/hashnode'
 import { profile, projects, skills, writing } from '@/lib/content'
+
+// Rebuild this page in the background at most once an hour (picks up new Hashnode posts)
+export const revalidate = 3600
 
 const nav = [
   { href: '#work', label: 'Experience' },
@@ -10,7 +14,9 @@ const nav = [
   { href: '#skills', label: 'Skills' },
 ]
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getPosts()
+
   return (
     <>
       <Interactions />
@@ -199,7 +205,7 @@ export default function Home() {
           </div>
 
           <ul className="mt-8 divide-y divide-line border-y border-line">
-            {writing.posts.map((post, i) => (
+            {posts.map((post, i) => (
               <li key={post.url} data-reveal style={{ ['--i' as string]: i }}>
                 <a
                   href={post.url}
@@ -209,7 +215,7 @@ export default function Home() {
                 >
                   <div>
                     <h3 className="font-semibold tracking-tight group-hover:text-accent">{post.title}</h3>
-                    <p className="mt-1 text-[0.95rem] text-muted">{post.summary}</p>
+                    <p className="mt-1 line-clamp-2 text-[0.95rem] text-muted">{post.summary}</p>
                   </div>
                   <span className="flex items-center gap-2 font-mono text-xs text-subtle">
                     {post.readTime}
