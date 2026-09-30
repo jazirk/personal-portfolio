@@ -1,7 +1,8 @@
 import { HeroBackground } from '@/components/HeroBackground'
+import { Experience } from '@/components/Experience'
 import { Interactions } from '@/components/Interactions'
-import { ArrowUpRight, Github, Mail, MapPin } from '@/components/Icons'
-import { experience, profile, projects, skills } from '@/lib/content'
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from '@/components/Icons'
+import { profile, projects, skills } from '@/lib/content'
 
 const nav = [
   { href: '#work', label: 'Experience' },
@@ -113,6 +114,15 @@ export default function Home() {
               <Github width={16} height={16} />
               GitHub
             </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="press inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-5 font-medium hover:bg-surface-2"
+            >
+              <Linkedin width={16} height={16} />
+              LinkedIn
+            </a>
             <span className="inline-flex items-center gap-1.5 px-2 text-sm text-subtle">
               <MapPin width={15} height={15} />
               {profile.location}
@@ -121,44 +131,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Experience ── */}
-        <section id="work" aria-labelledby="work-title" className="border-t border-line py-20 sm:py-28">
-          <div className="grid gap-10 md:grid-cols-[14rem_1fr]">
-            <div data-reveal>
-              <p className="eyebrow">Experience</p>
-              <h2 id="work-title" className="h2 mt-3">
-                {experience.company}
-              </h2>
-              <p className="mt-2 text-muted">{experience.role}</p>
-              <p className="mt-1 font-mono text-sm text-subtle">
-                {experience.period} · {experience.location}
-              </p>
-            </div>
-
-            <ol className="grid gap-4 sm:grid-cols-2">
-              {experience.highlights.map((h, i) => (
-                <li
-                  key={h.title}
-                  data-reveal
-                  style={{ ['--i' as string]: i % 2 }}
-                  className="card flex flex-col rounded-2xl border border-line bg-surface p-6"
-                >
-                  <p className="eyebrow">{h.tag}</p>
-                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{h.title}</h3>
-                  <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">{h.body}</p>
-                  {h.metric && (
-                    <p className="mt-6 flex items-baseline gap-2 border-t border-line pt-4">
-                      <span className="font-mono text-2xl font-medium tracking-tight text-accent">
-                        {h.metric.value}
-                      </span>
-                      <span className="text-sm text-subtle">{h.metric.label}</span>
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <Experience />
 
         {/* ── Projects ── */}
         <section
@@ -269,6 +242,9 @@ export default function Home() {
           <div className="flex gap-5">
             <a href={profile.github} target="_blank" rel="noreferrer" className="link-underline hover:text-fg">
               GitHub
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link-underline hover:text-fg">
+              LinkedIn
             </a>
             <a href={`mailto:${profile.email}`} className="link-underline hover:text-fg">
               Email

@@ -310,6 +310,45 @@ html.js [data-reveal][data-visible='true'] {
   background: linear-gradient(to bottom, transparent, var(--bg));
 }
 
+/* ── Experience timeline ─────────────────────────────────── */
+.timeline-rail {
+  position: absolute;
+  left: 11px;
+  top: 0.75rem;
+  bottom: 1.5rem;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.timeline-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--accent), color-mix(in srgb, var(--accent) 35%, transparent));
+  transform-origin: top;
+  transform: scaleY(0);
+  will-change: transform;
+}
+.timeline-dot {
+  position: absolute;
+  left: 5px;
+  top: 0.9rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  border: 2px solid var(--line-strong);
+  background: var(--bg);
+  transition:
+    border-color 300ms ease,
+    background-color 300ms ease,
+    box-shadow 300ms ease;
+}
+.timeline-dot[data-on='true'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
 /* ── Reduced motion: gentle fades, no movement ────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
