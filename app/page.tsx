@@ -1,3 +1,4 @@
+import { HeroBackground } from '@/components/HeroBackground'
 import { Interactions } from '@/components/Interactions'
 import { ArrowUpRight, Github, Mail, MapPin } from '@/components/Icons'
 import { experience, profile, projects, skills } from '@/lib/content'
@@ -24,7 +25,7 @@ export default function Home() {
       <header className="glass sticky top-0 z-40 border-b border-line">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
           <a href="#top" className="press font-mono text-sm font-medium tracking-tight">
-            jasir<span className="text-accent">.</span>k
+            jaasi<span className="text-accent">.</span>me
           </a>
           <nav aria-label="Primary" className="flex items-center gap-1">
             {nav.map((n) => (
@@ -51,8 +52,9 @@ export default function Home() {
         {/* ── Hero ── */}
         <section
           id="top"
-          className="grid items-center gap-10 pb-20 pt-16 sm:pb-28 sm:pt-24 md:grid-cols-[1fr_auto] md:gap-14"
+          className="relative isolate grid items-center gap-10 pb-20 pt-16 sm:pb-28 sm:pt-24 md:grid-cols-[1fr_auto] md:gap-14"
         >
+          <HeroBackground />
           <figure
             className="rise relative w-28 shrink-0 sm:w-36 md:order-last md:w-72"
             style={{ ['--i' as string]: 0 }}
