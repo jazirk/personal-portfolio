@@ -1,9 +1,9 @@
 import { HeroBackground } from '@/components/HeroBackground'
 import { Experience } from '@/components/Experience'
 import { Interactions } from '@/components/Interactions'
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from '@/components/Icons'
+import { ArrowUpRight, Camera, Github, Instagram, Linkedin, Mail, MapPin, Video } from '@/components/Icons'
 import { getPosts } from '@/lib/hashnode'
-import { profile, projects, skills, writing } from '@/lib/content'
+import { hobbies, profile, projects, skills, writing } from '@/lib/content'
 
 // Rebuild this page in the background at most once an hour (picks up new Hashnode posts)
 export const revalidate = 3600
@@ -260,6 +260,45 @@ export default async function Home() {
               ))}
             </dl>
           </div>
+        </section>
+
+        {/* ── Off the clock ── */}
+        <section aria-labelledby="hobbies-title" className="border-t border-line py-20 sm:py-24">
+          <div data-reveal className="max-w-xl">
+            <p className="eyebrow">Off the clock</p>
+            <h2 id="hobbies-title" className="mt-3 text-2xl font-semibold tracking-tight">
+              Behind a camera, or on the road
+            </h2>
+          </div>
+
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            {hobbies.map((h, i) => {
+              const Icon = h.kind === 'photo' ? Camera : Video
+              return (
+                <li key={h.handle} data-reveal style={{ ['--i' as string]: i }}>
+                  <a
+                    href={h.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="card press group flex h-full flex-col rounded-2xl border border-line bg-surface p-6"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent">
+                        <Icon width={20} height={20} />
+                      </span>
+                      <ArrowUpRight className="arrow shrink-0 text-subtle group-hover:text-accent" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{h.title}</h3>
+                    <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-muted">{h.body}</p>
+                    <p className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-subtle group-hover:text-fg">
+                      <Instagram width={16} height={16} />@{h.handle}
+                    </p>
+                    <span className="sr-only">(opens Instagram in a new tab)</span>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
         </section>
 
         {/* ── Contact ── */}

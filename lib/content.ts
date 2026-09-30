@@ -212,3 +212,20 @@ export const writing = {
     },
   ],
 }
+
+export const hobbies = [
+  {
+    kind: 'photo' as const,
+    title: 'Photography',
+    body: 'Chasing light and moments, then taking my time over the colour grade in Lightroom.',
+    handle: 'the__shutter__stories',
+    url: 'https://www.instagram.com/the__shutter__stories/',
+  },
+  {
+    kind: 'moto' as const,
+    title: 'Motovlogging',
+    body: 'Rides and road stories on my KTM 390 Adventure — shot, cut and narrated myself.',
+    handle: 'two__wheel__stories',
+    url: 'https://www.instagram.com/two__wheel__stories/',
+  },
+]
