@@ -2,7 +2,7 @@ import { HeroBackground } from '@/components/HeroBackground'
 import { Experience } from '@/components/Experience'
 import { Interactions } from '@/components/Interactions'
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from '@/components/Icons'
-import { profile, projects, skills } from '@/lib/content'
+import { profile, projects, skills, writing } from '@/lib/content'
 
 const nav = [
   { href: '#work', label: 'Experience' },
@@ -171,6 +171,50 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ── Writing (a glimpse; full posts live on Hashnode) ── */}
+        <section aria-labelledby="writing-title" className="border-t border-line py-16 sm:py-20">
+          <div data-reveal className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Writing</p>
+              <h2 id="writing-title" className="mt-3 text-2xl font-semibold tracking-tight">
+                Notes from the frontend
+              </h2>
+            </div>
+            <a
+              href={writing.blog}
+              target="_blank"
+              rel="noreferrer"
+              className="press group inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-muted hover:text-fg"
+            >
+              All posts on Hashnode
+              <ArrowUpRight width={16} height={16} className="arrow" />
+            </a>
+          </div>
+
+          <ul className="mt-8 divide-y divide-line border-y border-line">
+            {writing.posts.map((post, i) => (
+              <li key={post.url} data-reveal style={{ ['--i' as string]: i }}>
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="card group -mx-4 grid gap-1 rounded-xl px-4 py-5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8"
+                >
+                  <div>
+                    <h3 className="font-semibold tracking-tight group-hover:text-accent">{post.title}</h3>
+                    <p className="mt-1 text-[0.95rem] text-muted">{post.summary}</p>
+                  </div>
+                  <span className="flex items-center gap-2 font-mono text-xs text-subtle">
+                    {post.readTime}
+                    <ArrowUpRight width={15} height={15} className="arrow" />
+                  </span>
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
               </li>

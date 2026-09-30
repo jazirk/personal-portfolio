@@ -200,3 +200,21 @@ export const skills: { group: string; items: string[] }[] = [
     ],
   },
 ]
+
+export const writing = {
+  blog: 'https://jasir.hashnode.dev',
+  posts: [
+    {
+      title: 'Uber SDE 2 Interview Experience',
+      url: 'https://jasir.hashnode.dev/uber-sde-2-interview-experience',
+      summary: 'My interview experience for Software Engineer II – Frontend at Uber, shared to help anyone preparing for a similar role.',
+      readTime: '4 min read',
+    },
+    {
+      title: 'A Toggle Recursive List Menu, Any Levels Deep, with Vue 3',
+      url: 'https://jasir.hashnode.dev/creating-a-toggle-recursive-list-menu-with-any-number-of-levels-deep-with-vue-3',
+      summary: 'Using recursion and the Composition API to render nested, collapsible lists of any depth.',
+      readTime: '3 min read',
+    },
+  ],
+}

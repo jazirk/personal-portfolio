@@ -217,7 +217,8 @@ html.js [data-reveal][data-visible='true'] {
   .card:hover::before {
     opacity: 1;
   }
-  .card:hover .arrow {
+  .card:hover .arrow,
+  .group:hover .arrow {
     transform: translate(2px, -2px);
   }
   .link-underline {
