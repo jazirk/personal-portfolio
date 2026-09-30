@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: `${profile.name} — ${profile.role}`,
     description: profile.intro,
     type: 'website',
+    images: [{ url: profile.photo, width: 640, height: 640, alt: profile.name }],
   },
 }
 

@@ -6,6 +6,7 @@ export const profile = {
   location: 'Bengaluru, India',
   email: 'dev.jasirk@gmail.com',
   github: 'https://github.com/jazirk',
+  photo: '/jasir.webp',
   status: 'Open to senior frontend & full-stack roles',
   headline: 'I build interfaces that hold up at scale.',
   intro:

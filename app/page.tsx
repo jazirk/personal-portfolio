@@ -49,10 +49,33 @@ export default function Home() {
 
       <main id="main" className="mx-auto max-w-5xl px-5 sm:px-8">
         {/* ── Hero ── */}
-        <section id="top" className="pb-20 pt-20 sm:pb-28 sm:pt-28">
+        <section
+          id="top"
+          className="grid items-center gap-10 pb-20 pt-16 sm:pb-28 sm:pt-24 md:grid-cols-[1fr_auto] md:gap-14"
+        >
+          <figure
+            className="rise relative w-28 shrink-0 sm:w-36 md:order-last md:w-72"
+            style={{ ['--i' as string]: 0 }}
+          >
+            <div
+              aria-hidden
+              className="absolute -inset-3 -z-10 rounded-[2rem] bg-accent-soft blur-2xl md:-inset-5"
+            />
+            <img
+              src={profile.photo}
+              alt={`Portrait of ${profile.name}`}
+              width={640}
+              height={640}
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-square w-full rounded-3xl border border-line object-cover shadow-xl shadow-black/10 md:rounded-[2rem]"
+            />
+          </figure>
+
+          <div>
           <p
             className="rise inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted"
-            style={{ ['--i' as string]: 0 }}
+            style={{ ['--i' as string]: 1 }}
           >
             <span className="relative flex h-2 w-2">
               <span className="h-2 w-2 rounded-full bg-accent" />
@@ -60,19 +83,19 @@ export default function Home() {
             {profile.status}
           </p>
 
-          <h1 className="display rise mt-8 max-w-3xl" style={{ ['--i' as string]: 1 }}>
+          <h1 className="display rise mt-8 max-w-3xl" style={{ ['--i' as string]: 2 }}>
             {profile.name}.{' '}
             <span className="text-subtle">{profile.headline}</span>
           </h1>
 
           <p
             className="lead rise mt-6 max-w-2xl text-lg text-muted sm:text-xl"
-            style={{ ['--i' as string]: 2 }}
+            style={{ ['--i' as string]: 3 }}
           >
             {profile.intro}
           </p>
 
-          <div className="rise mt-10 flex flex-wrap items-center gap-3" style={{ ['--i' as string]: 3 }}>
+          <div className="rise mt-10 flex flex-wrap items-center gap-3" style={{ ['--i' as string]: 4 }}>
             <a
               href="#work"
               className="press inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 font-medium text-on-accent hover:opacity-90"
@@ -92,6 +115,7 @@ export default function Home() {
               <MapPin width={15} height={15} />
               {profile.location}
             </span>
+          </div>
           </div>
         </section>
 
