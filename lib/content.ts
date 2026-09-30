@@ -75,12 +75,6 @@ export const jobs: Job[] = [
         body: 'Partnered across five teams to launch a platform where thousands of Uber earners complete AI data-labelling and field tasks between trips. Designed the Bliss-side support and reworked the Task Widget to fit the new trip-to-task model.',
         metric: { value: '5', label: 'teams aligned' },
       },
-      {
-        title: 'AI Automation & Agent Tooling',
-        tag: 'Claude Skills',
-        body: 'Built Claude Skills that triage and fix unsound tests automatically, plus support-agent skills that read queries across channels and suggest actionable responses — taking load off engineering on-call.',
-        metric: { value: '57%', label: 'test backlog cut in a month' },
-      },
     ],
     tech: ['React', 'TypeScript', 'GraphQL'],
   },
