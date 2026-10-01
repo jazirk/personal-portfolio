@@ -43,7 +43,7 @@ export const jobs: Job[] = [
     period: 'Jan 2023 – Present',
     location: 'Bengaluru',
     summary:
-      'Frontend for Bliss, Uber’s customer support platform. I drive sprint planning and phased rollouts with Product and Engineering, and I’m an active production on-call responder.',
+      'Frontend for Uber’s next-gen customer support platform — used across phone, email, chat, messaging and in-person support. I drive sprint planning and phased rollouts with Product and Engineering, and I’m an active production on-call responder.',
     stats: [
       { value: '370+', label: 'production changes shipped' },
       { value: '25+', label: 'technical design docs' },
@@ -54,25 +54,25 @@ export const jobs: Job[] = [
       {
         title: 'iPad Document Capture',
         tag: 'Driver onboarding · UK & Poland',
-        body: 'Designed and built a live document and photo capture flow — QR-code handoff, in-page camera capture and multi-page image stitching — for markets that require live photos for identity checks. It replaced a deprecated third-party service and removed $4,500 a year in infra costs.',
+        body: 'Designed and built a live document and photo capture flow — QR-code handoff, in-page camera capture and multi-page image stitching — for markets that require live photos for identity checks. It replaced a deprecated third-party service and eliminated its yearly infra cost.',
         metric: { value: '400k+', label: 'uploads per quarter' },
       },
       {
-        title: 'Bliss 2.0 — Phone Channel',
+        title: 'Support Platform — Phone Channel',
         tag: 'Co-owner · 2.5+ years',
         body: 'Owned the phone channel end to end: Genesys/PureCloud telephony integration, a WebSocket-based telephony gateway client, observability and alerting dashboards, and an emergency-calling feature for EMEA markets.',
         metric: { value: '8,000+', label: 'phone agents' },
       },
       {
-        title: 'Bliss Greenlight',
-        tag: 'In-person agent platform',
+        title: 'In-Person Agent Platform',
+        tag: 'Platform migration',
         body: 'Led the Queue Page migration and wider evolution of the tool Uber’s in-person support agents use, writing seven production readiness reviews to guide the transition.',
         metric: { value: '~30%', label: 'less maintenance' },
       },
       {
-        title: 'Project Moonshot',
+        title: 'Driver Tasks Platform',
         tag: 'Frontend Lead',
-        body: 'Partnered across five teams to launch a platform where thousands of Uber earners complete AI data-labelling and field tasks between trips. Designed the Bliss-side support and reworked the Task Widget to fit the new trip-to-task model.',
+        body: 'Partnered across five teams to launch a platform where thousands of Uber earners complete AI data-labelling and field tasks between trips. Designed the support-side integration and reworked the Task Widget to fit the new trip-to-task model.',
         metric: { value: '5', label: 'teams aligned' },
       },
     ],
@@ -123,17 +123,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'Sukha Massage Therapy',
-    url: 'https://sukhatherapy.in',
-    kind: 'Local business website',
-    body: 'Booking-focused site for a Bengaluru home-visit practice: local SEO, LocalBusiness and FAQ structured data, custom botanical SVG illustrations and one-tap WhatsApp booking.',
-    tags: ['SEO', 'Schema.org', 'SVG', 'Vercel'],
+    name: 'Roush Mobile Phones',
+    url: 'https://roush.ae',
+    kind: 'E-commerce store · UAE',
+    body: 'Online store for my UAE electronics business — smartphones, tablets, smartwatches and gaming gear, with Tabby and Tamara instalments, cash on delivery and fast delivery across the UAE.',
+    tags: ['E-commerce', 'Payments', 'Rebuild in progress'],
   },
   {
     name: 'Adhruvique Global',
     url: 'https://adhruviqueglobal.com',
-    kind: 'Company landing page',
-    body: 'Landing page for the business, built with Next.js and designed to load fast on any device.',
+    kind: 'Agri export business',
+    body: 'Website for an agricultural products export business — presenting the company and its product range to international buyers. Built with Next.js and designed to load fast on any device.',
     tags: ['Next.js', 'React', 'Responsive'],
   },
   {
