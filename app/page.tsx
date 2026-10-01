@@ -1,14 +1,16 @@
 import { HeroBackground } from '@/components/HeroBackground'
+import { Em } from '@/components/Em'
 import { Experience } from '@/components/Experience'
 import { Interactions } from '@/components/Interactions'
 import { ArrowUpRight, Camera, Github, Instagram, Linkedin, Mail, MapPin, Video } from '@/components/Icons'
 import { getPosts } from '@/lib/hashnode'
-import { hobbies, profile, projects, skills, writing } from '@/lib/content'
+import { about, aiNote, hobbies, process, profile, projects, skills, writing } from '@/lib/content'
 
 // Rebuild this page in the background at most once an hour (picks up new Hashnode posts)
 export const revalidate = 3600
 
 const nav = [
+  { href: '#about', label: 'About' },
   { href: '#work', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
@@ -46,7 +48,7 @@ export default async function Home() {
             ))}
             <a
               href={`mailto:${profile.email}`}
-              className="press ml-2 inline-flex min-h-10 items-center gap-2 rounded-full bg-fg px-4 text-sm font-medium text-bg hover:opacity-90"
+              className="press ml-2 inline-flex min-h-10 items-center gap-2 rounded-[4px] bg-fg px-4 text-sm font-medium text-bg hover:opacity-90"
             >
               <Mail width={16} height={16} />
               Get in touch
@@ -92,9 +94,12 @@ export default async function Home() {
             {profile.status}
           </p>
 
-          <h1 className="display rise mt-8 max-w-3xl" style={{ ['--i' as string]: 2 }}>
-            {profile.name}.{' '}
-            <span className="text-subtle">{profile.headline}</span>
+          <p className="eyebrow rise mt-8" style={{ ['--i' as string]: 2 }}>
+            <b>{profile.name}</b>
+            {profile.role}
+          </p>
+          <h1 className="display rise mt-4 max-w-3xl" style={{ ['--i' as string]: 2 }}>
+            <Em h={profile.headline} />
           </h1>
 
           <p
@@ -107,7 +112,7 @@ export default async function Home() {
           <div className="rise mt-10 flex flex-wrap items-center gap-3" style={{ ['--i' as string]: 4 }}>
             <a
               href="#work"
-              className="press inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 font-medium text-on-accent hover:opacity-90"
+              className="press inline-flex min-h-11 items-center gap-2 rounded-[4px] bg-accent px-5 font-medium text-on-accent hover:opacity-90"
             >
               See my work
             </a>
@@ -115,7 +120,7 @@ export default async function Home() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="press inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-5 font-medium hover:bg-surface-2"
+              className="press inline-flex min-h-11 items-center gap-2 rounded-[4px] border border-line-strong px-5 font-medium hover:bg-surface-2"
             >
               <Github width={16} height={16} />
               GitHub
@@ -124,7 +129,7 @@ export default async function Home() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="press inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-5 font-medium hover:bg-surface-2"
+              className="press inline-flex min-h-11 items-center gap-2 rounded-[4px] border border-line-strong px-5 font-medium hover:bg-surface-2"
             >
               <Linkedin width={16} height={16} />
               LinkedIn
@@ -137,6 +142,37 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* ── 01 About ── */}
+        <section id="about" aria-labelledby="about-title" className="border-t border-line py-20 sm:py-28">
+          <p data-reveal className="eyebrow">
+            <b>01</b>About
+          </p>
+          <h2 id="about-title" data-reveal className="display mt-8 max-w-4xl text-[clamp(2.2rem,5.4vw,4.25rem)]">
+            <Em h={about.statement} />
+          </h2>
+
+          <div className="mt-14 grid gap-12 md:grid-cols-[1.15fr_1fr] md:gap-0">
+            <div className="space-y-6 text-lg leading-relaxed text-muted md:pr-14">
+              {about.story.map((para, i) => (
+                <p key={i} data-reveal className={i === 0 ? 'dropcap text-fg' : ''}>
+                  {para}
+                </p>
+              ))}
+            </div>
+            <ol className="divide-y divide-line md:border-l md:border-line">
+              {about.pillars.map((p, i) => (
+                <li key={p.title} data-reveal style={{ ['--i' as string]: i }} className="py-6 first:pt-0 md:pl-10 md:first:pt-1">
+                  <p className="eyebrow">
+                    <b>{String(i + 1).padStart(2, '0')}</b>
+                    {p.title}
+                  </p>
+                  <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         <Experience />
 
         {/* ── Projects ── */}
@@ -146,9 +182,9 @@ export default async function Home() {
           className="border-t border-line py-20 sm:py-28"
         >
           <div data-reveal className="max-w-xl">
-            <p className="eyebrow">Freelance & personal</p>
+            <p className="eyebrow"><b>03</b>Freelance & personal</p>
             <h2 id="projects-title" className="h2 mt-3">
-              Sites I’ve designed and shipped
+              Sites I’ve designed <span className="em">and shipped</span>
             </h2>
           </div>
 
@@ -159,13 +195,13 @@ export default async function Home() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="card press group flex h-full flex-col rounded-2xl border border-line bg-surface p-6"
+                  className="card press group flex h-full flex-col rounded-md border border-line bg-surface p-6"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <p className="eyebrow">{p.kind}</p>
                     <ArrowUpRight className="arrow shrink-0 text-subtle group-hover:text-accent" />
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold tracking-tight">{p.name}</h3>
+                  <h3 className="serif mt-3 text-[1.6rem] leading-tight tracking-tight">{p.name}</h3>
                   <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">{p.body}</p>
                   <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Built with">
                     {p.tags.map((t) => (
@@ -188,9 +224,9 @@ export default async function Home() {
         <section aria-labelledby="writing-title" className="border-t border-line py-16 sm:py-20">
           <div data-reveal className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="eyebrow">Writing</p>
-              <h2 id="writing-title" className="mt-3 text-2xl font-semibold tracking-tight">
-                Notes from the frontend
+              <p className="eyebrow"><b>04</b>Writing</p>
+              <h2 id="writing-title" className="h2 mt-4">
+                Notes from <span className="em">the frontend</span>
               </h2>
             </div>
             <a
@@ -214,7 +250,7 @@ export default async function Home() {
                   className="card group -mx-4 grid gap-1 rounded-xl px-4 py-5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8"
                 >
                   <div>
-                    <h3 className="font-semibold tracking-tight group-hover:text-accent">{post.title}</h3>
+                    <h3 className="serif text-xl tracking-tight group-hover:text-accent sm:text-2xl">{post.title}</h3>
                     <p className="mt-1 line-clamp-2 text-[0.95rem] text-muted">{post.summary}</p>
                   </div>
                   <span className="flex items-center gap-2 font-mono text-xs text-subtle">
@@ -231,9 +267,9 @@ export default async function Home() {
         {/* ── Skills ── */}
         <section id="skills" aria-labelledby="skills-title" className="border-t border-line py-20 sm:py-28">
           <div data-reveal className="max-w-2xl">
-            <p className="eyebrow">Toolkit</p>
-            <h2 id="skills-title" className="h2 mt-3">
-              Skills
+            <p className="eyebrow"><b>05</b>Index · Capabilities</p>
+            <h2 id="skills-title" className="h2 mt-4">
+              What I bring <span className="em">to the table</span>
             </h2>
           </div>
 
@@ -249,7 +285,7 @@ export default async function Home() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span>
-                    <span className="block text-xl font-semibold tracking-tight sm:text-2xl">{s.group}</span>
+                    <span className="serif block text-2xl leading-tight tracking-tight sm:text-[1.9rem]">{s.group}</span>
                     <span className="mt-1.5 block text-[0.95rem] text-muted">{s.blurb}</span>
                   </span>
                 </dt>
@@ -257,7 +293,7 @@ export default async function Home() {
                   {s.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-[4px] border border-line-strong px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-muted"
+                      className="tag"
                     >
                       {item}
                     </span>
@@ -266,14 +302,53 @@ export default async function Home() {
               </div>
             ))}
           </dl>
+
+          {/* AI pull-quote */}
+          <div className="mt-20 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-0">
+            <p data-reveal className="statement md:pr-14">
+              <Em h={aiNote.quote} />
+            </p>
+            <div data-reveal className="md:border-l md:border-line md:pl-10">
+              <p className="eyebrow">
+                <b>{aiNote.sideLabel[0]}</b>
+                {aiNote.sideLabel[1]}
+              </p>
+              <p className="mt-4 leading-relaxed text-muted">{aiNote.side}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 06 How I work ── */}
+        <section aria-labelledby="process-title" className="border-t border-line py-20 sm:py-28">
+          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-0">
+            <div className="md:pr-14">
+              <p data-reveal className="eyebrow">
+                <b>06</b>How I work
+              </p>
+              <h2 id="process-title" data-reveal className="statement mt-8">
+                <Em h={process.statement} />
+              </h2>
+            </div>
+            <ol className="divide-y divide-line md:border-l md:border-line">
+              {process.steps.map((st, i) => (
+                <li key={st.title} data-reveal style={{ ['--i' as string]: i }} className="py-6 first:pt-0 md:pl-10 md:first:pt-1">
+                  <p className="eyebrow">
+                    <b>{String(i + 1).padStart(2, '0')}</b>
+                    {st.title}
+                  </p>
+                  <p className="mt-3 text-lg leading-relaxed">{st.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
         {/* ── Off the clock ── */}
         <section aria-labelledby="hobbies-title" className="border-t border-line py-20 sm:py-24">
           <div data-reveal className="max-w-xl">
-            <p className="eyebrow">Off the clock</p>
-            <h2 id="hobbies-title" className="mt-3 text-2xl font-semibold tracking-tight">
-              Behind a camera, or on the road
+            <p className="eyebrow"><b>07</b>Off the clock</p>
+            <h2 id="hobbies-title" className="h2 mt-4">
+              Behind a camera, <span className="em">or on the road</span>
             </h2>
           </div>
 
@@ -286,7 +361,7 @@ export default async function Home() {
                     href={h.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="card press group flex h-full flex-col rounded-2xl border border-line bg-surface p-6"
+                    className="card press group flex h-full flex-col rounded-md border border-line bg-surface p-6"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent">
@@ -294,7 +369,7 @@ export default async function Home() {
                       </span>
                       <ArrowUpRight className="arrow shrink-0 text-subtle group-hover:text-accent" />
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold tracking-tight">{h.title}</h3>
+                    <h3 className="serif mt-5 text-[1.6rem] leading-tight tracking-tight">{h.title}</h3>
                     <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-muted">{h.body}</p>
                     <p className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-subtle group-hover:text-fg">
                       <Instagram width={16} height={16} />@{h.handle}
@@ -310,9 +385,9 @@ export default async function Home() {
         {/* ── Contact ── */}
         <section aria-labelledby="contact-title" className="border-t border-line py-24 sm:py-32">
           <div data-reveal className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Contact</p>
+            <p className="eyebrow"><b>08</b>Contact</p>
             <h2 id="contact-title" className="h2 mt-3">
-              Building something people use every day? Let’s talk.
+              Building something people use every day? <span className="em">Let’s talk.</span>
             </h2>
             <p className="lead mx-auto mt-5 max-w-lg text-muted">
               I’m looking for my next senior frontend or full-stack role, and I take on a few
@@ -320,7 +395,7 @@ export default async function Home() {
             </p>
             <a
               href={`mailto:${profile.email}`}
-              className="press mt-9 inline-flex min-h-12 items-center gap-2 rounded-full bg-accent px-6 font-medium text-on-accent hover:opacity-90"
+              className="press mt-9 inline-flex min-h-12 items-center gap-2 rounded-[4px] bg-accent px-6 font-medium text-on-accent hover:opacity-90"
             >
               <Mail width={17} height={17} />
               {profile.email}

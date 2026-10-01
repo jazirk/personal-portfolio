@@ -9,7 +9,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/jazirk',
   photo: '/jasir.webp',
   status: 'Open to senior frontend & full-stack roles',
-  headline: 'I build interfaces that hold up at scale.',
+  headline: { before: 'I build the interfaces people rely on ', accent: 'every day.', after: '' },
   intro:
     '6+ years shipping React and TypeScript products at Uber, FactSet and Infrrd.ai. Most recently I built the tools 30,000+ Uber support agents work in every day, and led the frontend of a platform that lets drivers earn between trips.',
 }
@@ -243,3 +243,63 @@ export const hobbies = [
     url: 'https://www.instagram.com/two__wheel__stories/',
   },
 ]
+
+// ── Editorial copy ────────────────────────────────────────────
+// Headline parts render as: before + <em>accent</em> + after
+
+export const about = {
+  statement: {
+    before: 'Most teams hire an engineer who ships fast ',
+    accent: 'or',
+    after: ' one who sweats the details. I’m both.',
+  },
+  story: [
+    'I started in 2019 at Infrrd.ai, building reusable UI for Homegenius, a real estate transaction platform. It taught me that a good component library is a product in its own right.',
+    'At FactSet I moved into financial tooling for portfolio managers, and learned that tests are a feature: the E2E suites I set up cut application bugs by 70%. I also moved our build from Webpack to Vite.',
+    'Then Uber. Since 2023 I’ve worked on the support platform 30,000+ agents use every day — co-owning the phone channel, leading the frontend for a new way for drivers to earn between trips, and shipping 370+ production changes along the way.',
+  ],
+  pillars: [
+    {
+      title: 'End-to-end ownership',
+      body: 'I write the technical design, ship it behind a feature flag, and watch the dashboards after. 25+ design docs and an on-call rotation say I finish what I start.',
+    },
+    {
+      title: 'Interface craft',
+      body: 'Motion, accessibility and performance aren’t polish added at the end — they’re part of the build. This site is the proof.',
+    },
+    {
+      title: 'AI-assisted pace',
+      body: 'Claude and Cursor are part of how I work every day. I write Claude Skills that automate the tedious parts of engineering, so the hard parts get my full attention.',
+    },
+  ],
+}
+
+export const experienceIntro = {
+  range: 'Selected work, 2019 – 2026',
+  headline: { before: 'Six years shipping interfaces, ', accent: 'at scale.', after: '' },
+  lead: 'From a real estate platform to financial analytics to the support platform behind Uber — owning features from the first design doc to production.',
+  metricsLabel: 'From my time at Uber',
+}
+
+export const aiNote = {
+  quote: {
+    before: 'Claude and Cursor are part of my development environment. Specs, context documents and reusable prompt patterns let me move ',
+    accent: 'at the pace of a small team.',
+    after: '',
+  },
+  sideLabel: ['Framework', 'agnostic'],
+  side: 'React, Vue and Angular — I’ve shipped production code in all three. Components, state and accessibility are the same problems everywhere.',
+}
+
+export const process = {
+  statement: {
+    before: 'You get one engineer who can own a feature end to end — design it, build it, ship it safely and keep it healthy, ',
+    accent: 'without the hand-offs.',
+    after: '',
+  },
+  steps: [
+    { title: 'Design', body: 'A technical design doc, edge cases and a rollout plan before the first line of code.' },
+    { title: 'Build', body: 'Accessible, fast UI with the tests to back it up.' },
+    { title: 'Ship & run', body: 'Feature-flagged rollouts, observability and on-call. Same person.' },
+  ],
+}

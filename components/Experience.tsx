@@ -1,11 +1,12 @@
-import { education, jobs, type Highlight, type Job } from '@/lib/content'
+import { education, experienceIntro, jobs, type Highlight, type Job } from '@/lib/content'
+import { Em } from './Em'
 import { GraduationCap } from './Icons'
 
 function Chips({ items, label }: { items: string[]; label: string }) {
   return (
     <ul className="flex flex-wrap gap-1.5" aria-label={label}>
       {items.map((t) => (
-        <li key={t} className="rounded-md bg-surface-2 px-2 py-1 font-mono text-[0.7rem] text-muted">
+        <li key={t} className="tag !px-2 !py-1 !text-[0.62rem]">
           {t}
         </li>
       ))}
@@ -18,14 +19,14 @@ function HighlightCard({ h, i, wide }: { h: Highlight; i: number; wide: boolean 
     <li
       data-reveal
       style={{ ['--i' as string]: i % 2 }}
-      className={`card flex flex-col rounded-2xl border border-line bg-surface p-6 ${wide ? 'sm:col-span-2' : ''}`}
+      className={`card flex flex-col rounded-md border border-line bg-surface p-6 ${wide ? 'sm:col-span-2' : ''}`}
     >
       <p className="eyebrow">{h.tag}</p>
-      <h4 className="mt-3 text-lg font-semibold tracking-tight">{h.title}</h4>
+      <h4 className="serif mt-3 text-[1.55rem] leading-tight tracking-tight">{h.title}</h4>
       <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">{h.body}</p>
       {h.metric && (
         <p className="mt-6 flex items-baseline gap-2 border-t border-line pt-4">
-          <span className="font-mono text-2xl font-medium tracking-tight text-accent">{h.metric.value}</span>
+          <span className="serif text-[2rem] leading-none text-accent">{h.metric.value}</span>
           <span className="text-sm text-subtle">{h.metric.label}</span>
         </p>
       )}
@@ -46,12 +47,12 @@ function JobEntry({ job }: { job: Job }) {
           <div className="flex items-center gap-3">
             <span
               aria-hidden
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line bg-surface font-mono text-lg font-medium text-accent"
+              className="serif grid h-11 w-11 shrink-0 place-items-center rounded-[4px] border border-line bg-surface text-2xl italic text-accent"
             >
               {job.company[0]}
             </span>
             <div>
-              <h3 className="flex items-center gap-2 text-xl font-semibold tracking-tight">
+              <h3 className="serif flex items-center gap-2 text-3xl tracking-tight">
                 {job.company}
                 {current && (
                   <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[0.65rem] font-medium uppercase tracking-wider text-accent">
@@ -75,19 +76,6 @@ function JobEntry({ job }: { job: Job }) {
             {job.summary}
           </p>
 
-          {job.stats && (
-            <dl
-              data-reveal
-              className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4"
-            >
-              {job.stats.map((s) => (
-                <div key={s.label} className="flex flex-col-reverse gap-1 bg-surface p-4 sm:p-5">
-                  <dt className="text-xs leading-snug text-subtle">{s.label}</dt>
-                  <dd className="font-mono text-2xl font-medium tracking-tight">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
 
           {highlights.length > 0 && (
             <ul className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -103,7 +91,7 @@ function JobEntry({ job }: { job: Job }) {
           )}
 
           {job.points && (
-            <div data-reveal className="rounded-2xl border border-line bg-surface p-6 sm:p-7">
+            <div data-reveal className="rounded-md border border-line bg-surface p-6 sm:p-7">
               <ul className="space-y-3.5">
                 {job.points.map((pt) => (
                   <li key={pt} className="flex gap-3 text-[0.95rem] leading-relaxed text-muted">
@@ -114,7 +102,7 @@ function JobEntry({ job }: { job: Job }) {
               </ul>
               {job.metric && (
                 <p className="mt-6 flex items-baseline gap-2 border-t border-line pt-4">
-                  <span className="font-mono text-2xl font-medium tracking-tight text-accent">
+                  <span className="serif text-[2rem] leading-none text-accent">
                     {job.metric.value}
                   </span>
                   <span className="text-sm text-subtle">{job.metric.label}</span>
@@ -129,19 +117,53 @@ function JobEntry({ job }: { job: Job }) {
 }
 
 export function Experience() {
+  const current = jobs[0]
+
   return (
     <section id="work" aria-labelledby="work-title" className="border-t border-line py-20 sm:py-28">
-      <div data-reveal className="max-w-2xl">
-        <p className="eyebrow">Experience</p>
-        <h2 id="work-title" className="h2 mt-3">
-          Six years of interfaces people rely on every day
-        </h2>
-        <p className="lead mt-4 text-muted">
-          From real estate tooling to financial analytics to Uber’s support platform.
+      <div data-reveal className="flex flex-wrap items-baseline justify-between gap-4 border-b border-line pb-5">
+        <p className="eyebrow">
+          <b>02</b>Experience
         </p>
+        <p className="eyebrow">{experienceIntro.range}</p>
       </div>
 
-      <div data-timeline className="relative mt-14 sm:mt-20">
+      <div className="mt-14 grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-0">
+        <div className="md:pr-14">
+          <h2 id="work-title" data-reveal className="display text-[clamp(2.4rem,5.6vw,4.5rem)]">
+            <Em h={experienceIntro.headline} />
+          </h2>
+          <p data-reveal className="lead mt-8 max-w-xl text-lg leading-relaxed text-muted">
+            {experienceIntro.lead}
+          </p>
+        </div>
+
+        <div data-reveal className="md:border-l md:border-line md:pl-10">
+          <p className="eyebrow">
+            <b>Role</b>
+          </p>
+          <p className="serif mt-3 text-[1.75rem] leading-tight">
+            {current.role}, {current.company}
+          </p>
+          <p className="mt-1 text-muted">
+            {current.location} · {current.period}
+          </p>
+          <p className="eyebrow mt-8">
+            <b>Metrics</b>
+            {experienceIntro.metricsLabel}
+          </p>
+          <dl className="mt-4 divide-y divide-line border border-line">
+            {(current.stats ?? []).slice(0, 3).map((m) => (
+              <div key={m.label} className="flex items-center gap-6 px-5 py-4">
+                <dd className="serif w-24 shrink-0 text-4xl leading-none">{m.value}</dd>
+                <dt className="eyebrow !tracking-[0.18em]">{m.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div data-timeline className="relative mt-20 sm:mt-28">
         <div aria-hidden className="timeline-rail">
           <div className="timeline-fill" />
         </div>
@@ -158,21 +180,21 @@ export function Experience() {
             <header data-reveal className="flex items-center gap-3">
               <span
                 aria-hidden
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line bg-surface text-accent"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-[4px] border border-line bg-surface text-accent"
               >
                 <GraduationCap width={20} height={20} />
               </span>
               <div>
-                <h3 className="text-xl font-semibold tracking-tight">Education</h3>
+                <h3 className="serif text-3xl tracking-tight">Education</h3>
                 <p className="font-mono text-xs text-subtle">{education.period}</p>
               </div>
             </header>
             <div
               data-reveal
-              className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-6 lg:flex-row lg:items-center lg:justify-between"
+              className="flex flex-col gap-4 rounded-md border border-line bg-surface p-6 lg:flex-row lg:items-center lg:justify-between"
             >
               <div className="shrink-0">
-                <p className="font-semibold tracking-tight">{education.degree}</p>
+                <p className="serif text-xl tracking-tight">{education.degree}</p>
                 <p className="text-sm text-muted">{education.school}</p>
               </div>
               <Chips items={education.certifications} label="Certifications" />

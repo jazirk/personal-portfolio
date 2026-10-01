@@ -6,11 +6,13 @@ Personal portfolio of Jasir K, Frontend Engineer — built with **Next.js 16**, 
 
 ## Sections
 
-- **Hero** — photo, intro and links, over an ambient animated background (drifting aurora, dot grid, cursor spotlight).
+- **Hero** — photo, headline and links, over an ambient animated background (drifting aurora, dot grid, cursor spotlight).
+- **About** — headline statement, short career story with a drop cap, and three working principles.
 - **Experience** — scroll-linked timeline across Uber, FactSet and Infrrd.ai, plus education and certifications.
 - **Projects** — freelance and personal sites (Roush Mobile Phones, Adhruvique Global, jaasi.me).
 - **Writing** — latest posts pulled live from Hashnode.
-- **Skills** — grouped toolkit.
+- **Skills** — numbered capabilities index, plus an AI-assisted development note.
+- **How I work** — design, build, ship & run.
 - **Off the clock** — photography and motovlogging on Instagram.
 - **Contact** — email, GitHub, LinkedIn.
 
@@ -32,7 +34,7 @@ Almost everything is data, so updates never touch layout code:
 
 | What | Where |
 | --- | --- |
-| Intro, contact links, experience, education, projects, skills, hobbies | [`lib/content.ts`](lib/content.ts) |
+| Intro, story, principles, experience, education, projects, skills, hobbies, process | [`lib/content.ts`](lib/content.ts) |
 | Profile photo | `public/jasir.webp` (square, ~640px) |
 | Hashnode blog address & fallback posts | `writing` in [`lib/content.ts`](lib/content.ts) |
 
@@ -59,7 +61,7 @@ public/
 
 ## Design notes
 
-- **Design system** from UI/UX Pro Max: dark-first "code dark + run green" palette, IBM Plex Sans + JetBrains Mono (self-hosted via Fontsource), with a light theme that follows the OS.
+- **Editorial design system**: warm near-black + cream type + amber accent (with a matching light "paper" theme), Newsreader serif display with one italic accent phrase per headline, Instrument Sans body and JetBrains Mono labels — all self-hosted via Fontsource. Numbered section labels and an index-style skills list.
 - **Motion** after Emil Kowalski: custom ease-out curves, `scale(0.97)` press feedback, short staggered entrances that never start from nothing, hover effects gated to real pointers.
 - **Apple HIG on the web**: translucent `backdrop-filter` nav, size-specific tracking and leading, smoothed (critically damped) cursor follow.
 - **Performance**: animations use only `transform`/`opacity`, the hero background pauses off-screen, and the photo is a 28 KB WebP.

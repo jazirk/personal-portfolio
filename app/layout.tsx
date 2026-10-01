@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import '@fontsource-variable/ibm-plex-sans'
+import '@fontsource-variable/instrument-sans'
+import '@fontsource-variable/newsreader'
+import '@fontsource-variable/newsreader/wght-italic.css'
 import '@fontsource-variable/jetbrains-mono'
 import { profile } from '@/lib/content'
 import './globals.css'
@@ -17,8 +19,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fafaf9' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0d14' },
+    { media: '(prefers-color-scheme: light)', color: '#f6f1e8' },
+    { media: '(prefers-color-scheme: dark)', color: '#1b1712' },
   ],
 }
 
