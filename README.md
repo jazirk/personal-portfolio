@@ -61,7 +61,7 @@ public/
 
 ## Design notes
 
-- **Editorial design system**: warm near-black + cream type + amber accent (with a matching light "paper" theme), Newsreader serif display with one italic accent phrase per headline, Instrument Sans body and JetBrains Mono labels — all self-hosted via Fontsource. Numbered section labels and an index-style skills list.
+- **Editorial design system**: dark "code dark + run green" palette (with a matching light theme), Newsreader serif display with one italic accent phrase per headline, Instrument Sans body and JetBrains Mono labels — all self-hosted via Fontsource. Numbered section labels and an index-style skills list.
 - **Motion** after Emil Kowalski: custom ease-out curves, `scale(0.97)` press feedback, short staggered entrances that never start from nothing, hover effects gated to real pointers.
 - **Apple HIG on the web**: translucent `backdrop-filter` nav, size-specific tracking and leading, smoothed (critically damped) cursor follow.
 - **Performance**: animations use only `transform`/`opacity`, the hero background pauses off-screen, and the photo is a 28 KB WebP.
