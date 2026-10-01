@@ -149,7 +149,7 @@ export const skills: { group: string; blurb: string; items: string[] }[] = [
   {
     group: 'Languages',
     blurb: 'The foundations I write every day',
-    items: ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5', 'CSS3'],
+    items: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'SQL', 'HTML5', 'CSS3'],
   },
   {
     group: 'Frontend',
