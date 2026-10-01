@@ -1,6 +1,6 @@
 # Jasir K — Portfolio
 
-Personal portfolio of Jasir K, Frontend Engineer — built with **Next.js 16**, **React 19**, **TypeScript** and **Tailwind CSS 4**, deployed on **Vercel**.
+Personal portfolio of Jasir K, Full Stack Engineer — built with **Next.js 16**, **React 19**, **TypeScript** and **Tailwind CSS 4**, deployed on **Vercel**.
 
 **Live:** [jaasi.me](https://jaasi.me)
 

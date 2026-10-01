@@ -2,7 +2,7 @@
 
 export const profile = {
   name: 'Jasir K',
-  role: 'Frontend Engineer',
+  role: 'Full Stack Engineer',
   location: 'Bengaluru, India',
   email: 'dev.jasirk@gmail.com',
   github: 'https://github.com/jazirk',
