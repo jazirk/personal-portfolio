@@ -4,6 +4,7 @@ import '@fontsource-variable/newsreader'
 import '@fontsource-variable/newsreader/wght-italic.css'
 import '@fontsource-variable/jetbrains-mono'
 import { profile } from '@/lib/content'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -31,7 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Reveal animations only hide content when JS is running */}
         <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js')` }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
