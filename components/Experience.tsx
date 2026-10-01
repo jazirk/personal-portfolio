@@ -191,13 +191,30 @@ export function Experience() {
             </header>
             <div
               data-reveal
-              className="flex flex-col gap-4 rounded-md border border-line bg-surface p-6 lg:flex-row lg:items-center lg:justify-between"
+              className="grid overflow-hidden rounded-md border border-line bg-surface sm:grid-cols-2"
             >
-              <div className="shrink-0">
-                <p className="serif text-xl tracking-tight">{education.degree}</p>
-                <p className="text-sm text-muted">{education.school}</p>
+              <div className="p-6">
+                <p className="eyebrow">
+                  <b>Degree</b>
+                </p>
+                <p className="serif mt-3 text-xl tracking-tight">{education.degree}</p>
+                <p className="text-sm text-muted">
+                  {education.school} · {education.period}
+                </p>
               </div>
-              <Chips items={education.certifications} label="Certifications" />
+              <div className="border-t border-line p-6 sm:border-l sm:border-t-0">
+                <p className="eyebrow">
+                  <b>Certifications</b>
+                </p>
+                <ul className="mt-3 space-y-3">
+                  {education.certifications.map((c) => (
+                    <li key={c.name}>
+                      <p className="serif text-xl leading-tight tracking-tight">{c.name}</p>
+                      <p className="text-sm text-muted">{c.issuer}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </li>

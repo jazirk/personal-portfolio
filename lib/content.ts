@@ -111,7 +111,10 @@ export const education = {
   school: 'VTU, Belgaum',
   degree: 'B.E. in Computer Science',
   period: '2015 – 2019',
-  certifications: ['Vue – The Complete Guide (Udemy)', 'Vue.js Forge Hackathon (VueSchool)'],
+  certifications: [
+    { name: 'Vue – The Complete Guide', issuer: 'Udemy' },
+    { name: 'Vue.js Forge Hackathon', issuer: 'VueSchool' },
+  ],
 }
 
 export type Project = {
