@@ -12,7 +12,7 @@ export const profile = {
   status: 'Open to senior frontend & full-stack roles',
   headline: { before: 'I build the interfaces people rely on ', accent: 'every day.', after: '' },
   intro:
-    'Full stack engineer with 6+ years at Uber, FactSet and Infrrd.ai. I take products end to end — React and Next.js up front, Node.js, Go, GraphQL and PostgreSQL behind — and most recently built tools that 30,000+ Uber support agents rely on every day.',
+    'Full stack engineer, 6+ years at Uber, FactSet and Infrrd.ai. React to Go, idea to production — and with Claude and Cursor as my pair programmers, I ship at the pace of a small team.',
 }
 
 export type Metric = { value: string; label: string }
