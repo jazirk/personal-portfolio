@@ -35,7 +35,7 @@ Almost everything is data, so updates never touch layout code:
 | What | Where |
 | --- | --- |
 | Intro, story, principles, experience, education, projects, skills, hobbies, process | [`lib/content.ts`](lib/content.ts) |
-| Profile photo | `public/jasir.webp` (square, ~640px) |
+| Hero illustration / profile photo | `public/jasir-cartoon.webp` (transparent, 768px) / `public/jasir.webp` (square, ~640px) |
 | Hashnode blog address & fallback posts | `writing` in [`lib/content.ts`](lib/content.ts) |
 
 **Writing** is fetched from Hashnode ([jasir.hashnode.dev](https://jasir.hashnode.dev)) through its public GraphQL API in [`lib/hashnode.ts`](lib/hashnode.ts). The home page regenerates at most once an hour (ISR), so a newly published post appears without a redeploy. If Hashnode is unreachable, the fallback posts in `content.ts` are shown.

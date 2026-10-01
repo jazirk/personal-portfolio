@@ -8,6 +8,7 @@ export const profile = {
   github: 'https://github.com/jazirk',
   linkedin: 'https://www.linkedin.com/in/jazirk',
   photo: '/jasir.webp',
+  avatar: '/jasir-cartoon.webp',
   status: 'Open to senior frontend & full-stack roles',
   headline: { before: 'I build the interfaces people rely on ', accent: 'every day.', after: '' },
   intro:

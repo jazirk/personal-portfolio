@@ -65,21 +65,18 @@ export default async function Home() {
         >
           <HeroBackground />
           <figure
-            className="rise relative w-28 shrink-0 sm:w-36 md:order-last md:w-72"
+            className="rise relative w-40 shrink-0 sm:w-48 md:order-last md:w-80"
             style={{ ['--i' as string]: 0 }}
           >
-            <div
-              aria-hidden
-              className="absolute -inset-3 -z-10 rounded-[2rem] bg-accent-soft blur-2xl md:-inset-5"
-            />
+            <div aria-hidden className="absolute inset-4 -z-10 rounded-full bg-accent-soft blur-3xl" />
             <img
-              src={profile.photo}
-              alt={`Portrait of ${profile.name}`}
-              width={640}
-              height={640}
+              src={profile.avatar}
+              alt={`Illustration of ${profile.name} coding on a laptop`}
+              width={768}
+              height={768}
               fetchPriority="high"
               decoding="async"
-              className="aspect-square w-full rounded-3xl border border-line object-cover shadow-xl shadow-black/10 md:rounded-[2rem]"
+              className="aspect-square w-full drop-shadow-2xl"
             />
           </figure>
 
@@ -153,6 +150,21 @@ export default async function Home() {
 
           <div className="mt-14 grid gap-12 md:grid-cols-[1.15fr_1fr] md:gap-0">
             <div className="space-y-6 text-lg leading-relaxed text-muted md:pr-14">
+              <figure data-reveal className="flex items-center gap-4">
+                <img
+                  src={profile.photo}
+                  alt={`Photo of ${profile.name}`}
+                  width={640}
+                  height={640}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-16 w-16 rounded-md border border-line object-cover"
+                />
+                <figcaption className="text-sm leading-snug">
+                  <span className="block text-fg">{profile.name}, the real one</span>
+                  <span className="text-subtle">{profile.location}</span>
+                </figcaption>
+              </figure>
               {about.story.map((para, i) => (
                 <p key={i} data-reveal className={i === 0 ? 'dropcap text-fg' : ''}>
                   {para}
