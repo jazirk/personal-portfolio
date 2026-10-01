@@ -1,30 +1,76 @@
 # Jasir K — Portfolio
 
-Personal portfolio built with **Next.js 16**, **React 19**, **TypeScript** and **Tailwind CSS 4**, exported as a fully static site.
+Personal portfolio of Jasir K, Frontend Engineer — built with **Next.js 16**, **React 19**, **TypeScript** and **Tailwind CSS 4**, deployed on **Vercel**.
+
+**Live:** [jaasi.me](https://jaasi.me)
+
+## Sections
+
+- **Hero** — photo, intro and links, over an ambient animated background (drifting aurora, dot grid, cursor spotlight).
+- **Experience** — scroll-linked timeline across Uber, FactSet and Infrrd.ai, plus education and certifications.
+- **Projects** — freelance and personal sites (Roush Mobile Phones, Adhruvique Global, jaasi.me).
+- **Writing** — latest posts pulled live from Hashnode.
+- **Skills** — grouped toolkit.
+- **Off the clock** — photography and motovlogging on Instagram.
+- **Contact** — email, GitHub, LinkedIn.
 
 ## Develop
+
+Requires Node.js 20.9+.
 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build
-npm start          # serve the production build
 npm run typecheck
+npm run build      # production build
+npm start          # serve the production build locally
 ```
 
 ## Editing content
 
-All copy (intro, experience, projects, skills, contact) lives in [`lib/content.ts`](lib/content.ts). Layout code never needs to change to update the site.
+Almost everything is data, so updates never touch layout code:
 
-**Writing** is pulled live from Hashnode ([jasir.hashnode.dev](https://jasir.hashnode.dev)) via its public GraphQL API in [`lib/hashnode.ts`](lib/hashnode.ts). The home page regenerates at most once an hour, so a newly published post appears automatically. If the API is unreachable, the fallback posts in `content.ts` are shown.
+| What | Where |
+| --- | --- |
+| Intro, contact links, experience, education, projects, skills, hobbies | [`lib/content.ts`](lib/content.ts) |
+| Profile photo | `public/jasir.webp` (square, ~640px) |
+| Hashnode blog address & fallback posts | `writing` in [`lib/content.ts`](lib/content.ts) |
+
+**Writing** is fetched from Hashnode ([jasir.hashnode.dev](https://jasir.hashnode.dev)) through its public GraphQL API in [`lib/hashnode.ts`](lib/hashnode.ts). The home page regenerates at most once an hour (ISR), so a newly published post appears without a redeploy. If Hashnode is unreachable, the fallback posts in `content.ts` are shown.
+
+## Project structure
+
+```
+app/
+  layout.tsx            fonts, metadata, theme colour
+  page.tsx              page sections
+  globals.css           design tokens, motion, hero background, timeline
+components/
+  Experience.tsx        experience timeline
+  HeroBackground.tsx    aurora + dot grid + cursor spotlight
+  Interactions.tsx      scroll reveals, card spotlights, timeline progress
+  Icons.tsx             inline SVG icons
+lib/
+  content.ts            all site copy
+  hashnode.ts           Hashnode posts fetcher
+public/
+  jasir.webp            profile photo
+```
 
 ## Design notes
 
 - **Design system** from UI/UX Pro Max: dark-first "code dark + run green" palette, IBM Plex Sans + JetBrains Mono (self-hosted via Fontsource), with a light theme that follows the OS.
-- **Motion** after Emil Kowalski: custom ease-out curves, `scale(0.97)` press feedback, short staggered entrances that never start from nothing, hover effects gated to real pointers, full `prefers-reduced-motion` support.
-- **Apple HIG on the web**: translucent `backdrop-filter` nav with content scrolling beneath, size-specific tracking and leading, `prefers-reduced-transparency` fallback.
-- Accessible by default: skip link, visible focus rings, semantic landmarks, 44px+ touch targets, AA contrast in both themes.
+- **Motion** after Emil Kowalski: custom ease-out curves, `scale(0.97)` press feedback, short staggered entrances that never start from nothing, hover effects gated to real pointers.
+- **Apple HIG on the web**: translucent `backdrop-filter` nav, size-specific tracking and leading, smoothed (critically damped) cursor follow.
+- **Performance**: animations use only `transform`/`opacity`, the hero background pauses off-screen, and the photo is a 28 KB WebP.
+- **Accessibility**: skip link, visible focus rings, semantic landmarks, 44px+ touch targets, AA contrast in both themes, and full `prefers-reduced-motion` / `prefers-reduced-transparency` support.
 
 ## Deploy
 
-Import the repo in Vercel (zero config). Hourly regeneration (ISR) needs a Next.js-aware host such as Vercel or Netlify, not a plain static host.
+Hosted on Vercel, connected to this repo:
+
+1. Import the repo at [vercel.com/new](https://vercel.com/new) — no settings needed.
+2. Every push to `main` deploys automatically.
+3. Custom domain: Project → Settings → Domains.
+
+Hourly regeneration (ISR) needs a Next.js-aware host such as Vercel or Netlify — not a plain static host.
