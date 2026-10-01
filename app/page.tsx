@@ -230,36 +230,42 @@ export default async function Home() {
 
         {/* ── Skills ── */}
         <section id="skills" aria-labelledby="skills-title" className="border-t border-line py-20 sm:py-28">
-          <div className="grid gap-10 md:grid-cols-[14rem_1fr]">
-            <div data-reveal>
-              <p className="eyebrow">Toolkit</p>
-              <h2 id="skills-title" className="h2 mt-3">
-                Skills
-              </h2>
-            </div>
-            <dl className="divide-y divide-line border-y border-line">
-              {skills.map((s, i) => (
-                <div
-                  key={s.group}
-                  data-reveal
-                  style={{ ['--i' as string]: i }}
-                  className="grid gap-3 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6"
-                >
-                  <dt className="pt-1 text-sm font-medium">{s.group}</dt>
-                  <dd className="flex flex-wrap gap-2">
-                    {s.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-line px-3 py-1 text-sm text-muted"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          <div data-reveal className="max-w-2xl">
+            <p className="eyebrow">Toolkit</p>
+            <h2 id="skills-title" className="h2 mt-3">
+              Skills
+            </h2>
           </div>
+
+          <dl className="mt-12 divide-y divide-line border-y border-line">
+            {skills.map((s, i) => (
+              <div
+                key={s.group}
+                data-reveal
+                className="grid gap-5 py-8 md:grid-cols-[minmax(0,22rem)_1fr] md:gap-0"
+              >
+                <dt className="flex gap-4 md:border-r md:border-line md:pr-10">
+                  <span className="pt-1.5 font-mono text-xs text-accent tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span>
+                    <span className="block text-xl font-semibold tracking-tight sm:text-2xl">{s.group}</span>
+                    <span className="mt-1.5 block text-[0.95rem] text-muted">{s.blurb}</span>
+                  </span>
+                </dt>
+                <dd className="flex flex-wrap content-start gap-2 pl-9 md:pl-10">
+                  {s.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-[4px] border border-line-strong px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-muted"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* ── Off the clock ── */}

@@ -145,25 +145,30 @@ export const projects: Project[] = [
   },
 ]
 
-export const skills: { group: string; items: string[] }[] = [
+export const skills: { group: string; blurb: string; items: string[] }[] = [
   {
     group: 'Languages',
+    blurb: 'The foundations I write every day',
     items: ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5', 'CSS3'],
   },
   {
     group: 'Frontend',
+    blurb: 'Building interfaces people rely on',
     items: ['React', 'Next.js', 'Vue', 'Angular', 'Tailwind CSS', 'SASS', 'Frontend architecture'],
   },
   {
     group: 'Backend & APIs',
+    blurb: 'Enough of the stack to ship end to end',
     items: ['Node.js', 'Golang', 'GraphQL', 'REST', 'PostgreSQL', 'WebSockets'],
   },
   {
     group: 'Testing & tooling',
+    blurb: 'Keeping fast-moving codebases healthy',
     items: ['Jest', 'TestCafe', 'BrowserStack', 'E2E testing', 'Vite', 'Webpack', 'ESLint', 'Git'],
   },
   {
     group: 'Delivery & operations',
+    blurb: 'Getting changes to production safely',
     items: [
       'Continuous delivery',
       'Feature-flag rollouts',
@@ -175,23 +180,32 @@ export const skills: { group: string; items: string[] }[] = [
     ],
   },
   {
+    group: 'AI-assisted development',
+    blurb: 'How I ship at the pace of a small engineering team',
+    items: [
+      'Claude',
+      'Claude Skills',
+      'Cursor',
+      'Prompt engineering',
+      'Context documents',
+      'AI agent tooling',
+      'Rapid prototyping',
+    ],
+  },
+  {
     group: 'Platform & integrations',
+    blurb: 'Connecting products to the systems around them',
     items: ['Genesys / PureCloud telephony', 'Camera & media APIs', 'Legacy migrations', 'Shared component libraries'],
   },
   {
     group: 'Interface craft',
+    blurb: 'The details that make software feel right',
     items: ['Motion & interaction design', 'Accessibility (WCAG)', 'Responsive layout', 'Web performance', 'SEO & structured data'],
   },
   {
-    group: 'AI & ways of working',
-    items: [
-      'Claude Skills & agent tooling',
-      'AI-assisted engineering',
-      'Cross-team technical leadership',
-      'Agile',
-      'OOP',
-      'Data structures & algorithms',
-    ],
+    group: 'Ways of working',
+    blurb: 'How I work with teams',
+    items: ['Cross-team technical leadership', 'Agile', 'OOP', 'Data structures & algorithms'],
   },
 ]
 
