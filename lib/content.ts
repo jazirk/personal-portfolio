@@ -9,7 +9,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/jazirk',
   photo: '/jasir.webp',
   avatar: '/jasir-cartoon.webp',
-  status: 'Open to senior frontend & full-stack roles',
+  status: 'Open to senior full-stack roles · Taking on select freelance projects',
   headline: { before: 'I build the interfaces people rely on ', accent: 'every day.', after: '' },
   intro:
     'Full stack engineer, 6+ years at Uber, FactSet and Infrrd.ai. React to Go, idea to production — and with Claude and Cursor as my pair programmers, I ship at the pace of a small team.',
